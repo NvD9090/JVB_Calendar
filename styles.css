@@ -1,0 +1,270 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+ul li {
+    list-style: none;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    display: grid;
+    place-items: center;
+    height: 100vh;
+    background-color: #333333;
+}
+
+.main {
+    background-color: rgba(49, 49, 49, 1);
+    border-radius: 2px;
+    box-shadow: 0 0 30px #222222;
+    color: #d9d9d9;
+}
+
+.header {
+    width: 100%;
+    color: white;
+    padding: 20px;
+    background-color: #222223;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #272727;
+}
+
+.header i {
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #212121;
+    border: 1px solid #333333;
+}
+
+.calendar {
+    display: grid;
+    gap: 10px;
+    width: 400px;
+    height: 450px;
+    padding: 20px;
+    position: relative;
+}
+
+.month-group {
+    display: grid;
+    grid-template-columns: 7fr 3fr;
+    padding: 10px;
+    align-items: center;
+    position: relative;
+}
+
+.month {
+    font-weight: bold;
+    font-size: 16px;
+}
+.box-button {
+    display: flex;
+    justify-content: flex-end;
+}
+.calendar .month-group .box-button i {
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 3px;
+}
+
+.box-button i:hover {
+    background-color: rgba(62, 62, 62, 1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+}
+
+.weekdays, .days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+    text-align: center;
+}
+
+.weekdays div, .days div {
+    padding: 12px 0;
+    border-radius: 5px;
+}
+
+.days {
+    height: auto;
+    row-gap: 10px;
+}
+
+.days div {
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.days div:hover {
+    background-color: rgba(62, 62, 62, 1);
+    border-radius: 50%;
+    transform: scale(1.03);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.days .today {
+    background-color: #1872f8;
+    color: white;
+    border-radius: 50%;
+}
+
+.days .fade {
+    color: #555;
+}
+
+.fade:hover {
+    color: #fff;
+}
+
+.days-wrapper {
+    overflow: hidden;
+    position: relative;
+}
+
+.slide-prev {
+    animation: slidePrev 0.5s ease forwards;
+}
+
+.slide-next {
+    animation: slideNext 0.5s ease forwards;
+}
+
+@keyframes slidePrev {
+    from { transform: translateY(-1%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideNext {
+    from { transform: translateY(1%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-top: 1px solid #272727;
+    background-color: rgba(50, 50, 50, 1);
+}
+
+.timer, .focus {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.timer i, .focus i {
+    padding: 5px;
+    border-radius: 7px;
+    background-color: #3f3e3f;
+    border: 1px solid rgba(49, 47, 47, 0.1);
+    cursor: pointer;
+}
+
+.focus {
+    background-color: rgba(62, 62, 62, 1);
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.month-list {
+    visibility: hidden; 
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    height: 80%;
+    z-index: 10;
+    display: grid;
+    column-gap: 20px;
+    row-gap: 20px;
+    grid-template-columns: repeat(4, auto);
+    border-radius: 5px;
+}
+.box-month {
+    visibility: hidden; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(49, 49, 49, 1);
+    z-index: 10;
+}
+
+.month-list > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+.show {
+    visibility: visible;
+}
+.year {
+    display: none;
+    margin-left: 20px;
+}
+.monthList, .yearList {
+    grid-template-columns: repeat(4, 1fr);  
+    grid-auto-rows: 1fr;  
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+}
+
+.monthList > div, .yearList > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 100%; 
+    box-sizing: border-box;
+}
+
+.current-month, .current-year {
+    background-color: #1872f8;
+    width: 90%;
+    color: white;
+    padding: 10px;
+    border-radius: 50% !important; 
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-weight: bold;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-left: 5px;
+}
+
+.box-button-year {
+    display: none;
+    justify-content: flex-end;
+}
+.calendar .month-group .box-button-year i {
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 3px;
+}
+
+.locked {
+    pointer-events: none;
+    color: #555;
+}

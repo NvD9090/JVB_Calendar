@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="./styles.css">
+    <title>Calendar</title>
+</head>
+<body>
+    <main class="main">
+        <header class="header">
+            <p>Monday, November 7</p>
+            <i class="bi bi-chevron-down" aria-label="Expand Menu"></i>
+        </header>
+        <div class="calendar">
+          
+            <div class="month-group" id="month-group">
+                <div id="month" class="month" style="cursor: pointer;">November</div>
+                <div id="year" class="year"></div>
+                <div class="box-button">
+                    <i class="bi bi-caret-up-fill" id="prevButton" aria-label="Previous Month"></i>
+                    <i class="bi bi-caret-down-fill" id="nextButton" aria-label="Next Month"></i>
+                </div>
+                <div class="box-button-year">
+                    <i class="bi bi-caret-up-fill" id="prevButtonYear" aria-label="Previous Month"></i>
+                    <i class="bi bi-caret-down-fill" id="nextButtonYear" aria-label="Next Month"></i>
+                </div>
+                <div class="box-button-year">
+                    <i class="bi bi-caret-up-fill" id="prevButtonListYear" aria-label="Previous Month"></i>
+                    <i class="bi bi-caret-down-fill" id="nextButtonListYear" aria-label="Next Month"></i>
+                </div>
+            </div>
+            <div class="weekdays">
+                <div>Su</div><div>Mo</div><div>Tu</div><div>We</div><div>Th</div><div>Fr</div><div>Sa</div>
+            </div>
+            <div class="days-wrapper">
+                <div class="days" id="days"></div>
+                <div class="monthList" id="monthList"></div>
+                <div class="yearList" id="yearList"></div>
+
+            </div>    
+        </div>
+        <footer class="footer">
+            <div class="timer">
+                <i class="bi bi-dash" aria-label="Decrease Time"></i>
+                <div class="box-min"><span class="minutes">30</span><span>min</span></div>
+                <i class="bi bi-plus" aria-label="Increase Time"></i>
+            </div>
+            <div class="focus">
+                <i class="bi bi-caret-right-fill" aria-label="Start Focus"></i>
+                <span>Focus</span>
+            </div>
+        </footer>
+    </main>
+    <script src="./script.js"></script>
+</body>
+</html>
