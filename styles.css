@@ -40,7 +40,9 @@ body {
     background-color: #212121;
     border: 1px solid #333333;
 }
-
+.month-group {
+    cursor: pointer;
+}
 .calendar {
     display: grid;
     gap: 10px;
@@ -110,6 +112,26 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+.monthList div:hover {
+    background-color: rgba(62, 62, 62, 1);
+    border-radius: 50%;
+    height: 100%;
+    padding: 0;
+    margin: 5px;
+    width: 90%;
+    transform: scale(1.03);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.yearList div:hover {
+    background-color: rgba(62, 62, 62, 1);
+    border-radius: 50%;
+    height: 100%;
+    padding: 0;
+    margin: 5px;
+    width: 90%;
+    transform: scale(1.03);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
 .days .today {
     background-color: #1872f8;
     color: white;
