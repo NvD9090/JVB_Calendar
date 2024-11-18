@@ -48,6 +48,9 @@ body {
     height: 450px;
     padding: 20px;
     position: relative;
+    overflow: hidden; 
+    max-height: 450px; 
+    transition: max-height 0.5s ease-out;
 }
 
 .month-group {
@@ -267,4 +270,12 @@ body {
 .locked {
     pointer-events: none;
     color: #555;
+}
+.calendar.close {
+    display: none;
+   overflow: hidden;
+   
+}
+main {
+    width: 400px;
 }

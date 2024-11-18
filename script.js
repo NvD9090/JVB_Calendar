@@ -260,6 +260,41 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+    function formatDate() {
+        const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        const months = [
+            'January', 'February', 'March', 'April', 'May', 'June', 
+            'July', 'August', 'September', 'October', 'November', 'December'
+        ];
+        const today = new Date();
+        const dayName = days[today.getDay()];
+        const monthName = months[today.getMonth()];
+        const date = today.getDate();
     
+        return `${dayName}, ${monthName} ${date}`;
+    }
+    function updateHeader() {
+        const headerDateElement = document.querySelector('#date');
+        if (headerDateElement) {
+            headerDateElement.textContent = formatDate();
+        }
+    }
+    updateHeader();
+    
+    const toggleMenu = document.getElementById('toggle-menu')
+    const calendar = document.querySelector('.calendar')
+    toggleMenu.addEventListener('click', () => {
+        calendar.classList.toggle('collapsed');
+
+        calendar.classList.toggle('close');
+        if (calendar.classList.contains('close')) {
+            toggleMenu.classList.remove('bi-chevron-down');
+            toggleMenu.classList.add('bi-chevron-up');
+        } 
+        else  {
+            toggleMenu.classList.add('bi-chevron-down');
+            toggleMenu.classList.remove('bi-chevron-up');
+        } 
+    })
     
 });
