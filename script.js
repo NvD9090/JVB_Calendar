@@ -31,14 +31,15 @@ document.addEventListener('DOMContentLoaded', function() {
     function renderCalendar(date) {
         const year = date.getFullYear();
         const month = date.getMonth();
+        
 
         if (!isYearMode) {
             const firstDay = new Date(year, month, 1).getDay();
             const lastDay = new Date(year, month + 1, 0).getDate();
-
+            yearList.style.display = 'none'
             monthYears.textContent = `${months[month]} ${year}`;
             dayContainer.innerHTML = '';
-
+            
             const prevMonthLastDay = new Date(year, month, 0).getDate();
 
             for (let i = firstDay; i > 0; i--) {
@@ -55,6 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (i === today.getDate() && month === today.getMonth() && year === today.getFullYear()) {
                     dayDiv.classList.add('today');
                 }
+
 
                 dayContainer.appendChild(dayDiv);
             }
@@ -144,7 +146,7 @@ document.addEventListener('DOMContentLoaded', function() {
         renderMonth()
     });
 
-    currentYear.addEventListener('wheel', function(e) {
+    monthList.addEventListener('wheel', function(e) {
         if (e.deltaY > 0) {
             currentDate.setFullYear(currentDate.getFullYear() + 1);
         } else {
