@@ -160,10 +160,15 @@ document.addEventListener('DOMContentLoaded', function() {
     monthList.addEventListener('wheel', function(e) {
         if (e.deltaY > 0) {
             currentDate.setFullYear(currentDate.getFullYear() + 1);
+            currentYearValue += 1; 
+
         } else {
             currentDate.setFullYear(currentDate.getFullYear() - 1);
+            currentYearValue -= 1; 
+
         }
         currentYear.textContent = currentDate.getFullYear(); 
+
     });
 
     yearList.addEventListener('wheel', function(e) {
@@ -174,18 +179,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         renderListYear(currentYearValue); 
     });
-    // dayContainer.addEventListener('wheel', function(e) {
-    //     if (e.deltaY > 0) {
-    //         alert('ok')
-    //         // currentDate.setDate(currentDate.getDate() + 1);
-    //     } else {
-    //         alert('ok')
-    //         // currentDate.setDate(currentDate.getDate() - 1);
-    //     }
-
-    //     // renderCalendar(currentDate); 
-    // });
-
+   
     renderCalendar(currentDate);
 
     let currentYearValue = currentDate.getFullYear();
@@ -321,5 +315,55 @@ document.addEventListener('DOMContentLoaded', function() {
             toggleMenu.classList.remove('bi-chevron-up');
         } 
     })
+    const minutesDisplay = document.querySelector('.minutes');
+    const increaseButton = document.querySelector('.bi-plus');
+    const decreaseButton = document.querySelector('.bi-dash');
+    const startButton = document.querySelector('.focus');
+    let timeInMinutes = 30; 
+    let timer;
+    let isTimerRunning = false;
+
+    function startTimer() {
+        if (isTimerRunning) return; 
+        
+        isTimerRunning = true;
+        timer = setInterval(function() {
+            if (timeInMinutes > 0) {
+                timeInMinutes--;
+                minutesDisplay.textContent = timeInMinutes;
+                console.log(timeInMinutes)
+            } else {
+                clearInterval(timer);
+                isTimerRunning = false;
+                alert("Time's up!");
+            }
+        }, 60000);  
+    }
+
+   
+    minutesDisplay.textContent = timeInMinutes + ' ';
+
+
+    increaseButton.addEventListener('click', function() {
+        if (isTimerRunning) return;
+        if(timeInMinutes < 240) {
+            timeInMinutes += 15;
+            minutesDisplay.textContent = timeInMinutes + ' ';
+        }
+       
+    });
+
+    decreaseButton.addEventListener('click', function() {
+        if (isTimerRunning) return; 
+        if (timeInMinutes > 5) {
+            timeInMinutes -= 5;
+            minutesDisplay.textContent = timeInMinutes + ' ';
+        }
+    });
+
+    // Event listener to start the timer
+    startButton.addEventListener('click', function() {
+        startTimer();
+    });
     
 });
